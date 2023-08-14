@@ -57,7 +57,7 @@ class GenService {
         const DataSchema = schema({
           subpatterns: Array.of(1, 24, SubpatternSchema),
           pattern: String,
-          words: Number.min(1).max(9999),
+          words: Number.min(1).max(49999),
           newline: Boolean,
           filterdupes: Boolean
         })
@@ -185,15 +185,15 @@ class GenService {
 
   // When the number of desired words is changed, create a new version of state
   wordNumChange (val, data) {
-    // Limit number entry to between 1 and 9999
+    // Limit number entry to between 1 and 49999
     if (val < 1) {
       val = 1
-    } else if (val > 9999) {
-      val = 9999
+    } else if (val > 49999) {
+      val = 49999
     }
 
-    // Only change state if the number is between 1 and 9999
-    if (val > 0 && val < 10000) {
+    // Only change state if the number is between 1 and 49999
+    if (val > 0 && val < 50000) {
       const newData = JSON.parse(JSON.stringify(data))
       newData.words = val
       return newData
